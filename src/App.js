@@ -24,13 +24,35 @@ export const options = {
   indexAxis: 'y',
   scales:{
     x:{
-      stacked:true
+      stacked:false,
+      ticks: {
+        beginAtZero: true,
+        callback: (v) => {
+          return v < 0 ? -v : v;
+        },
+      }
     },
     y:{
       beginAtZero:true,
       stacked:true
     }
   },
+  // tooltips: {
+  //   // intersect: false,
+  //   callbacks: {
+  //     labels: (c) => {
+  //       const value = Number(c.value);
+  //       const positiveOnly = value < 0 ? -value : value;
+  //       let retStr = "";
+  //       if (c.datasetIndex === 0) {
+  //         retStr += `Male: ${positiveOnly.toString()}`;
+  //       } else {
+  //         retStr += `Female: ${positiveOnly.toString()}`;
+  //       }
+  //       return retStr;
+  //     },
+  //   },
+  // },
   elements: {
     bar: {
       borderWidth: 2,
@@ -39,17 +61,28 @@ export const options = {
   },
   responsive: true,
   plugins: {
+    tooltip: {
+         callbacks: {
+      label: (c) => {
+        const value = Number(c.raw);
+        const positiveOnly = value < 0 ? -value : value;
+        let label = "";
+          label += `Total: ${positiveOnly.toString()}`;
+        return label;
+      },
+    },
+    },
     legend: {
-      position: 'right',
+      position: 'none',
     },
     title: {
       display: true,
-      text: 'Chart.js Horizontal Bar Chart',
+      text: 'MOPA Horizontal Bar Chart',
     },
   },
 };
 
-const labels = ['65+', '56-65', '46-55', '36-45', '26-35', '13-25', '0-12'];
+const labels = ['Minister', 'SECRETARY', 'SENIOR SECRETARY', 'SECY', 'PRINCIPAL SECY', 'PRINCIPAL SECY', 'CABINET SECY'];
 const dataSet1=[4,7,12,14,18,21,25]
 const dataSet1Form=[]
 dataSet1.forEach((item)=>dataSet1Form.push(item*-1))
@@ -61,13 +94,13 @@ export const data = {
       label: 'Dataset 1',
       data: [4,7,12,14,18,21,25],
       borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      backgroundColor: 'red',
     },
     {
       label: 'Dataset 2',
       data:  dataSet1Form,
       borderColor: 'rgb(255, 99, 132)',
-      backgroundColor:  'rgba(255, 99, 132, 0.5)',
+      backgroundColor:  'red',
     },
   ],
 };
