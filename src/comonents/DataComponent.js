@@ -8,7 +8,9 @@ const thStyle = {
 
 export const DataComponent = forwardRef((props, ref) => {
   return (
-    <div className="p-5" ref={ref}>
+    <div>
+      <div style={{width:"900px",height:"600px",margin:"auto"}}>
+      <div className="p-5" ref={ref}>
       <p>Date:28/8/12</p>
       <div className="text-center mb-3">
         <img src={Image} alt="..." width={120} height={120} />
@@ -186,5 +188,8 @@ export const DataComponent = forwardRef((props, ref) => {
         <caption>Previously sold products</caption>
       </table> */}
     </div>
+      </div>
+    </div>
+    
   );
 });
