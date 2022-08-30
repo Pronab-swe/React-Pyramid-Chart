@@ -8,7 +8,6 @@ const thStyle = {
 
 export const DataComponent = forwardRef((props, ref) => {
   return (
-    <div>
       <div style={{width:"900px",height:"600px",margin:"auto"}}>
       <div className="p-5" ref={ref}>
       <p>Date:28/8/12</p>
@@ -189,7 +188,6 @@ export const DataComponent = forwardRef((props, ref) => {
       </table> */}
     </div>
       </div>
-    </div>
     
   );
 });
